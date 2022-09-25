@@ -57,9 +57,14 @@
                       @endif
                     </div>
 
-                    <a href="{{ route('tweet.show',$tweet->id) }}">
-                      <h3 class="text-left font-bold text-lg text-grey-dark">{{$tweet->tweet}}</h3>
-                    </a>
+                    <div class="text-left">
+                        <a href="{{ route('tweet.show',$tweet->id) }}">
+                        <span class="font-bold text-lg text-grey-dark">{{$tweet->tweet}}</span>
+                        </a>
+                        @if(!($tweet->created_at == $tweet->updated_at))
+                        <span class="text-xs font-light">(編集済み)</span>
+                        @endif
+                    </div>
 
                     <div class="flex">
                       <!-- favorite 状態で条件分岐 -->
