@@ -55,6 +55,30 @@
                         </form>
                         @endif
                       @endif
+
+                      <!-- Block ボタン -->
+                      @if($tweet->user->id !== Auth::id())
+                        <!-- block 状態で条件分岐 -->
+                        @if(Auth::user()->blockings()->where('users.id', $tweet->user->id)->exists())
+                        <!-- unblock ボタン -->
+
+                        <form action="{{ route('unblock', $tweet->user) }}" method="POST" class="text-left">
+                            @csrf
+                            <button type="submit" class="flex mr-2 ml-2 text-sm hover:bg-gray-200 hover:shadow-none text-red py-1 px-2 focus:outline-none focus:shadow-outline">
+                            <img class="h-6 w-6" src="{{ asset('images/caution_red.png') }}">
+                            </button>
+
+                        </form>
+                        @else
+                        <!-- block ボタン -->
+                        <form action="{{ route('block', $tweet->user) }}" method="POST" class="text-left">
+                            @csrf
+                            <button type="submit" class="flex mr-2 ml-2 text-sm hover:bg-gray-200 hover:shadow-none text-black py-1 px-2 focus:outline-none focus:shadow-outline">
+                            <img class="h-6 w-6" src="{{ asset('images/caution.png') }}">
+                            </button>
+                        </form>
+                        @endif
+                      @endif
                     </div>
 
                     <div class="text-left">

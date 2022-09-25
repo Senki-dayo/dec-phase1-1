@@ -17,8 +17,14 @@ class TweetController extends Controller
      */
     public function index()
     {
-        $tweets = Tweet::getAllOrderByUpdated_at();
-        return view('tweet.index',compact('tweets'));
+        $blockings = User::find(Auth::id())->blockings->pluck('id')->all();
+        // $tweets = Tweet::getAllOrderByUpdated_at();
+        $tweets = Tweet::query()
+            ->where('user_id', 'like', '%')
+            ->WhereNotIn('user_id', $blockings)
+            ->orderBy('updated_at', 'desc')
+            ->get();
+        return view('tweet.index', compact('tweets'));
     }
 
     /**
@@ -138,10 +144,21 @@ class TweetController extends Controller
     {
     // フォローしているユーザを取得する
     $followings = User::find(Auth::id())->followings->pluck('id')->all();
+    $blockings = User::find(Auth::id())->blockings->pluck('id')->all();
     // 自分とフォローしている人が投稿したツイートを取得する
     $tweets = Tweet::query()
         ->where('user_id', Auth::id())
         ->orWhereIn('user_id', $followings)
+        ->WhereNotIn('user_id', $blockings)
+        ->orderBy('updated_at', 'desc')
+        ->get();
+    return view('tweet.index', compact('tweets'));
+    }
+
+    public function blocklist(){
+    $blockings = User::find(Auth::id())->blockings->pluck('id')->all();
+    $tweets = Tweet::query()
+        ->WhereIn('user_id', $blockings)
         ->orderBy('updated_at', 'desc')
         ->get();
     return view('tweet.index', compact('tweets'));

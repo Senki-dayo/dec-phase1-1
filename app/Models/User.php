@@ -62,4 +62,14 @@ class User extends Authenticatable
     return $this->belongsToMany(self::class, "follows", "following_id", "user_id")->withTimestamps();
     }
 
+    public function blockings()
+    {
+    return $this->belongsToMany(self::class, "blocks", "user_id", "blocking_id")->withTimestamps();
+    }
+
+    public function blockers()
+    {
+    return $this->belongsToMany(self::class, "blocks", "blocking_id", "user_id")->withTimestamps();
+    }
+
 }
