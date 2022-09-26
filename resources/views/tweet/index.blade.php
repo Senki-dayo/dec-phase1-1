@@ -92,6 +92,10 @@
                         @endif
                     </div>
 
+                    <div class="text-left mb-2 ml-2">
+                        <span class="font-normal text-normal text-grey-dark">{{$tweet->description}}</span>
+                    </div>
+
                     <div class="flex">
                       <!-- favorite 状態で条件分岐 -->
                       @if($tweet->users()->where('user_id', Auth::id())->exists())
