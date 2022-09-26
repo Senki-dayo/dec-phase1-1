@@ -157,10 +157,9 @@ class TweetController extends Controller
 
     public function blocklist(){
     $blockings = User::find(Auth::id())->blockings->pluck('id')->all();
-    $tweets = Tweet::query()
-        ->WhereIn('user_id', $blockings)
-        ->orderBy('updated_at', 'desc')
+    $users = User::query()
+        ->WhereIn('id', $blockings)
         ->get();
-    return view('tweet.index', compact('tweets'));
+    return view('blocklist.index', compact('users'));
     }
 }
