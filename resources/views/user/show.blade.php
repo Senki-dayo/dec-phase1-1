@@ -47,6 +47,15 @@
                 @endforeach
               </div>
 
+              @if($user->id == Auth::id())
+              <form action="{{ route('follow.edit' ,$user) }}" method="GET" class="text-left">
+                @csrf
+                <button class="block text-center w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
+                    Edit
+                </button>
+              </form>
+              @endif
+
               <a href="{{ url()->previous() }}" class="block text-center w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none">
                 Back
               </a>

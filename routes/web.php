@@ -24,6 +24,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/tweet/blocklist', [TweetController::class, 'blocklist'])->name('tweet.blocklist');
     Route::get('/tweet/timeline', [TweetController::class, 'timeline'])->name('tweet.timeline');
     Route::get('user/{user}', [FollowController::class, 'show'])->name('follow.show');
+    Route::get('user/{user}/edit', [FollowController::class, 'edit'])->name('follow.edit');
+    Route::put('user/{user}/update', [FollowController::class, 'update'])->name('follow.update');
     Route::post('user/{user}/follow', [FollowController::class, 'store'])->name('follow');
     Route::post('user/{user}/unfollow', [FollowController::class, 'destroy'])->name('unfollow');
     Route::post('user/{user}/block', [BlockController::class, 'store'])->name('block');

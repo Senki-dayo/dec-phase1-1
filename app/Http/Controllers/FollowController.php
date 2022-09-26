@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
 use App\Models\User;
 use Auth;
+use App\Models\Tweet;
 
 class FollowController extends Controller
 {
@@ -66,7 +68,8 @@ class FollowController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('user.edit', compact('user'));
     }
 
     /**
@@ -78,7 +81,21 @@ class FollowController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+    //バリデーション
+    $validator = Validator::make($request->all(), [
+        'name' => 'required | max:191',
+        'email' => 'required',
+    ]);
+    //バリデーション:エラー
+    if ($validator->fails()) {
+        return redirect()
+        ->route('follow.edit', $id)
+        ->withInput()
+        ->withErrors($validator);
+    }
+    //データ更新処理
+    $result = User::find($id)->update($request->all());
+    return redirect()->route('follow.show', $id);
     }
 
     /**
