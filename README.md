@@ -10,6 +10,19 @@
 ## デプロイ先
 http://agile-depths-86814.herokuapp.com/
 
+## 変更内容
+- 自分のツイートにフォローボタンを表示させない
+- ツイートの詳細も一覧に表示
+- 編集したツイートに(編集済み)と表示
+- ブロック機能を追加
+ ブロックしたユーザのツイートは表示されない
+ ブロックリストから解除が可能
+- ユーザページの機能を拡張
+ 自分の名前とemailを変更可能
+ アイコン機能を追加。同様に変更可能。
+
+デプロイしたサイトでは、アイコンの表示が上手くいっていません。
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
