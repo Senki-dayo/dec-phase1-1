@@ -15,7 +15,7 @@
               <div class="flex flex-col mb-4">
                 <p class="mb-2 uppercase font-bold text-lg text-grey-darkest">Name</p>
                 <div class="flex">
-                    <img class="h-10 w-10" src="{{ asset('storage/'.$user->img_path) }}">
+                    <img class="w-10 rounded-lg" src="{{ asset('storage/'.$user->img_path) }}">
                     <p class="py-2 px-3 text-grey-darkest" id="name">
                     {{$user->name}}
                     </p>

@@ -23,7 +23,7 @@
                   <td class="py-4 px-6 border-b border-grey-light">
                     <div class="flex">
 
-                      <img class="h-6 w-6 mr-2" src="{{ asset('/images/default_icon.png') }}">
+                      <img class="w-10 mr-2 rounded-lg" src="{{ asset('storage/'.$user->img_path) }}">
 
                       <!-- 名前の表示 -->
                       <a href="{{ route('follow.show', $user->id) }}">
