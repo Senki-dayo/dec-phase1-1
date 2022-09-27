@@ -23,7 +23,7 @@
                   <td class="py-4 px-6 border-b border-grey-light">
                     <div class="flex">
 
-                      <img class="h-6 w-6 mr-2 mb-2" src="{{ asset('images/'.$tweet->user->img_path) }}">
+                      <img class="h-10 w-10 mr-2 mb-2" src="{{ asset('storage/'.$tweet->user->img_path) }}">
 
                       <!-- 名前の表示 -->
                       <a href="{{ route('follow.show', $tweet->user->id) }}">
