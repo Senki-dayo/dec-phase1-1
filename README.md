@@ -21,10 +21,6 @@ http://agile-depths-86814.herokuapp.com/
   自分の名前とemailを変更可能
   アイコン機能を追加。同様に変更可能。
 
-デプロイしたサイトでは、アイコンの表示が上手くいっていませんでした。
-heroku上でのコマンドの叩き方がわからないため、Storageのシンボリックリンクが作成できていないためです。
-なので、一応動画も上げておきました。
-
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
